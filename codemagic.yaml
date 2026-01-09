@@ -5,8 +5,17 @@ workflows:
       flutter: stable
 
     scripts:
-      - flutter pub get
-      - flutter build apk --debug
+      - name: Create platform folders if missing
+        script: |
+          if [ ! -d "android" ]; then
+            flutter create .
+          fi
+
+      - name: Get packages
+        script: flutter pub get
+
+      - name: Build APK
+        script: flutter build apk --debug
 
     artifacts:
       - build/**/outputs/**/*.apk
