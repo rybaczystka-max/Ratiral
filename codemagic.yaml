@@ -26,7 +26,7 @@ workflows:
       - name: Codegen (Hive)
         script: flutter pub run build_runner build --delete-conflicting-outputs
       - name: Build debug APK
-        script: flutter build apk --debug
+        script: flutter build apk --release
 
     artifacts:
       - build/**/outputs/**/*.apk
